@@ -5,15 +5,6 @@ import { comments, CommentType } from './data/comments';
 
 function App() {
 
-  const reply = (reply: CommentType[]) => {
-    return (reply.map(y => <div><div className="flex p-2 items-start space-x-2 pl-14">
-      <img className="w-10 w-10 rounded-full" src={y.userImagePath}></img>
-      <div className="bg-gray-500 rounded-lg p-2">
-        <p className="font-semibold text-white">{y.username}</p>
-        <p className='text-white'>{y.commentText}</p>
-      </div>
-    </div></div>))
-  }
 
   return (
     <div className="p-2">
@@ -59,7 +50,13 @@ function App() {
                   </div>
                 </div>
                 <div>
-                  {reply(x.replies)}
+                  {x.replies.map(y => <div><div className="flex p-2 items-start space-x-2 pl-14">
+                    <img className="w-10 w-10 rounded-full" src={y.userImagePath}></img>
+                    <div className="bg-gray-500 rounded-lg p-2">
+                      <p className="font-semibold text-white">{y.username}</p>
+                      <p className='text-white'>{y.commentText}</p>
+                    </div>
+                  </div></div>)}
                 </div>
               </div>
             )
